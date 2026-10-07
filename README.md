@@ -1,5 +1,7 @@
 # College Management System
 
+Project board: [College Management System](https://github.com/users/microBabaComp/projects/1).
+
 A multi-college operations platform to bring academic, administrative, finance, and student-support workflows into one tenant-aware product. This repository is the college-specific project and is separate from the SchoolOS project.
 
 > **Prototype status:** the current web UI uses illustrative sample data only. It has no backend, identity provider, database, or live college records. Do not enter real personal information.
