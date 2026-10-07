@@ -1,19 +1,17 @@
 # Module documentation index
 
-Every module document records status, owner, version, review date, user-visible changes, data/schema changes, permissions, integrations, migration/rollback, risk and support notes. Update module docs and CHANGELOG in the same change as implementation.
+Each module document has a version, owner, status and review date. For each release record user-visible behavior, data/schema changes, permissions, integrations, migrations/rollback, risks and support notes. Update the module document and changelog together.
 
-| Module | Scope |
+| Module | Specification |
 |---|---|
-| Tenant setup | College identity, campuses, academic calendar, locale, branding and feature configuration |
-| Identity & access | Users, memberships, roles, invitations, MFA and session policy |
-| Admissions | Applications, document review, decisions and enrollment |
-| Student records | Profiles, guardians, enrollment, consent and transcripts |
-| Academics | Programs, courses, sections, timetables and grading |
-| Attendance | Rosters, attendance capture, corrections and policy alerts |
-| Faculty & staff | Directory, workload, leave and approvals |
-| Finance | Fee plans, invoices, receipts, waivers and reconciliation |
-| Campus services | Library, transport, hostel, facilities and service desk |
-| Communication | Announcements, targeted notices, templates and delivery history |
-| Analytics & governance | Scoped dashboards, exports, audit and retention |
+| Identity & access | [identity-access.md](identity-access.md) |
+| Admissions | [admissions.md](admissions.md) |
+| Student records | [student-records.md](student-records.md) |
+| Academics & attendance | [academics-attendance.md](academics-attendance.md) |
+| Faculty & staff | [faculty-staff.md](faculty-staff.md) |
+| Finance | [finance.md](finance.md) |
+| Campus services | [campus-services.md](campus-services.md) |
+| Communications | [communications.md](communications.md) |
+| Analytics & governance | [analytics-governance.md](analytics-governance.md) |
 
-These are planned specifications. They are not claims that these modules are already implemented.
+These specifications define intended scope. They do not claim that the modules are implemented in the current UI prototype.
