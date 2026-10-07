@@ -6,7 +6,7 @@ Each specification records module status, owner, version and review date. For ev
 |---|---|---|
 | Tenant setup & college administration | In progress | [tenant-administration.md](tenant-administration.md) |
 | Identity & access | In progress | [identity-access.md](identity-access.md) |
-| Admissions | Planned | [admissions.md](admissions.md) |
+| Admissions | In progress | [admissions.md](admissions.md) |
 | Student records | In progress | [student-records.md](student-records.md) |
 | Academics, timetable & attendance | In progress | [academics-attendance.md](academics-attendance.md) |
 | Faculty & staff | Planned | [faculty-staff.md](faculty-staff.md) |

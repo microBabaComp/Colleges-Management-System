@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.5.0] — 2026-10-07
+
+### Added
+- College-scoped admissions programs and dated application intakes.
+- Public applications with private status tracking tokens.
+- Registrar/college-admin application review with constrained decisions and audit reasons.
+
+### Security and limitations
+- Tenant-aware foreign keys and per-process submission rate limits.
+- No file uploads, email delivery, applicant accounts or offer-to-student conversion.
+
+
+
 ## [0.4.0] — 2026-10-07
 
 ### Added

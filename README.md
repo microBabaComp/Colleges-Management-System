@@ -5,25 +5,17 @@ Project board: [College Management System](https://github.com/users/microBabaCom
 A cross-platform, multi-college operations application. Windows and Linux use the same Docker Compose stack; developers can run the Node.js app directly with PostgreSQL in Docker. This repository is separate from SchoolOS.
 
 ## Start
+- Windows: Docker Desktop in WSL2 Linux-container mode, then ./scripts/up.ps1 in PowerShell.
+- Linux: Docker Engine and Docker Compose plugin, then ./scripts/up.sh.
+- Open http://localhost:8080, use the one-time installer token, and create the first college administrator.
 
-- Windows: Docker Desktop in WSL2 Linux-container mode, then `./scripts/up.ps1` in PowerShell.
-- Linux: Docker Engine and Docker Compose plugin, then `./scripts/up.sh`.
-- Open `http://localhost:8080`, enter the one-time installer token, and create the first college administrator.
+## Current release (0.5.0)
+Cross-platform Docker install; protected setup, sessions, college workspaces, student directory and academic/attendance workflows. This feature branch adds admissions programs, dated intakes, public applications with private status tracking, and audited registrar decisions. Application uploads, email delivery, and offer-to-student conversion are not included.
 
-See [cross-platform install](docs/deployment/cross-platform.md) for development, backups and platform guidance.
+## Security and data
+This is an early working foundation, not a complete ERP or independently audited production system. Do not use real student or applicant data until privacy, authorization, backup/restore, TLS, monitoring, incident response, legal and security reviews are complete. Public applications are rate-limited in-process only and require additional anti-spam measures before opening externally.
 
-## Implemented foundation (0.4.0)
+## Documentation
+[Architecture](docs/architecture/overview.md) · [Cross-platform install](docs/deployment/cross-platform.md) · [Security baseline](docs/security/security-baseline.md) · [Module specifications](docs/modules/README.md) · [Versioning](docs/governance/versioning.md) · [Roadmap](docs/roadmap.md) · [Changelog](CHANGELOG.md)
 
-Token-protected first setup; scrypt passwords and random opaque sessions; CSRF token rotation, same-origin checks, security headers and request limits; college membership and verified switching; PostgreSQL migrations and append-only audit records; college-scoped student directory; academic terms, course catalog, sections, faculty assignment, roster enrollment and attendance register; role-based section access; Docker health checks, private service network, persistent PostgreSQL volume, non-root read-only app container, dropped capabilities and file-backed secrets.
-
-## Scope and security
-
-The dashboard’s admissions, finance, timetable and analytics remain placeholders. Academic setup, enrollment and attendance are now working application paths; this is still an early release, not a complete ERP, independent security audit, or guarantee against vulnerabilities. Do not load production student data until the institution has reviewed privacy, authorization, backups, TLS, monitoring and incident response.
-
-## Documents
-
-- [Architecture](docs/architecture/overview.md) · [Cross-platform install](docs/deployment/cross-platform.md) · [Tenant onboarding](docs/product/tenant-onboarding.md)
-- [Security baseline](docs/security/security-baseline.md) · [Module specifications](docs/modules/README.md) · [Versioning](docs/governance/versioning.md) · [Roadmap](docs/roadmap.md) · [Changelog](CHANGELOG.md)
-
-Runtime baseline: Node.js 24 LTS, PostgreSQL 18, Docker Compose. [Node.js release schedule](https://nodejs.org/en/about/previous-releases) · [PostgreSQL support policy](https://www.postgresql.org/support/versioning/) · [Docker Compose install](https://docs.docker.com/compose/install/).
-
+Runtime baseline: Node.js 24 LTS, PostgreSQL 18, Docker Compose.
