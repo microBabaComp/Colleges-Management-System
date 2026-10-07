@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f6f7fb"><meta name="description" content="College Management System dashboard prototype">
+<title>CollegeOS — Campus Operations</title><link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<aside class="sidebar" id="sidebar">
+  <a class="brand" href="#"><span class="brand-mark">C</span><span>College<span class="light">OS</span><small>CAMPUS OPERATIONS</small></span></a>
+  <button class="tenant" id="setup"><span class="crest">N</span><span><b id="college">Northstar College</b><small id="year">Academic year 2026–27</small></span><i>⌄</i></button>
+  <p class="label">WORKSPACE</p><nav id="nav">
+    <a class="active" href="#overview">◫ <span>Overview</span></a>
+    <p class="label">ACADEMICS</p>
+    <a href="#students">♙ <span>Students</span><em>2.4k</em></a><a href="#admissions">✧ <span>Admissions</span><em class="orange">18</em></a>
+    <a href="#academics">▦ <span>Academics</span></a><a href="#attendance">◷ <span>Attendance</span></a>
+    <p class="label">OPERATIONS</p><a href="#finance">◎ <span>Finance</span></a><a href="#people">♧ <span>Faculty &amp; staff</span></a>
+    <a href="#services">⌂ <span>Campus services</span></a><a href="#analytics">▥ <span>Analytics</span></a>
+  </nav>
+  <div class="side-bottom"><a href="#settings">⚙ <span>Settings</span></a><section class="help"><b>Welcome to CollegeOS</b><p>Shape your workspace to match how your college operates.</p><button id="guide">Explore onboarding →</button></section><div class="profile"><span class="avatar">AM</span><span><b>Alex Morgan</b><small>College Administrator</small></span><button aria-label="Profile options">···</button></div></div>
+</aside>
+<main>
+<header><button class="menu" id="menu" aria-label="Open menu">☰</button><div class="crumb">Workspace <span>/</span> <b id="current">Overview</b></div><div class="actions"><label class="search">⌕ <input id="search" placeholder="Search modules…" aria-label="Search modules"></label><button id="theme" class="icon" aria-label="Toggle theme">◐</button><button class="icon bell" id="bell" aria-label="Notifications">♧</button><span class="avatar">AM</span></div></header>
+<div class="content">
+<div class="welcome"><div><div class="date">● &nbsp; WEDNESDAY, OCTOBER 7, 2026</div><h1>Good morning, Alex <span>✦</span></h1><p>Here’s what’s happening across your college today.</p></div><button id="quick" class="primary">＋ &nbsp; Quick action&nbsp;⌄</button></div>
+<section class="stats">
+<article><small>Total students</small><b>2,486</b><span class="up">↗ 8.2% <i>vs last semester</i></span><div class="spark purple"></div></article>
+<article><small>Attendance rate</small><b>94.6<sup>%</sup></b><span class="up">↗ 2.4% <i>vs last semester</i></span><div class="spark green"></div></article>
+<article><small>Fee collection</small><b>$842<sup>k</sup></b><span class="up">↗ 12.8% <i>vs last semester</i></span><div class="spark orange"></div></article>
+<article><small>Open applications</small><b>186</b><span class="down">↘ 3.1% <i>vs last semester</i></span><div class="spark blue"></div></article>
+</section>
+<section class="grid">
+<article class="panel chart-panel"><div class="panel-head"><div><h2>Enrollment overview</h2><p>Student enrollment across academic year</p></div><button class="select" id="period">This year⌄</button></div><div class="legend">● Enrolled &nbsp;&nbsp; <span>● Graduated</span><b>+14.8% <i>vs last year</i></b></div><div class="chart"><div class="yaxis"><span>2.5k</span><span>2.0k</span><span>1.5k</span><span>1.0k</span><span>0.5k</span></div><div class="plot"><div class="lines"><i></i><i></i><i></i><i></i><i></i></div><svg viewBox="0 0 700 180" preserveAspectRatio="none" aria-label="Illustrative student enrollment trend" role="img"><defs><linearGradient id="fill" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#8069e8" stop-opacity=".2"/><stop offset="1" stop-color="#8069e8" stop-opacity="0"/></linearGradient></defs><path class="area" d="M0 144 Q35 140 65 134T130 120T195 110T260 98T325 83T390 70T455 57T520 47T585 36T650 25T700 18V180H0Z"/><path class="trendline" d="M0 144 Q35 140 65 134T130 120T195 110T260 98T325 83T390 70T455 57T520 47T585 36T650 25T700 18"/></svg><div class="months"><span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span></div></div></div></article>
+<article class="panel breakdown"><div class="panel-head"><div><h2>Students by faculty</h2><p>Current enrollment mix</p></div><button class="dots" aria-label="More options">···</button></div><div class="donut"><div><b>2,486</b><small>Students</small></div></div><ul><li><i class="d1"></i>Engineering <b>34%</b></li><li><i class="d2"></i>Business <b>26%</b></li><li><i class="d3"></i>Arts &amp; sciences <b>22%</b></li><li><i class="d4"></i>Health sciences <b>18%</b></li></ul></article>
+</section>
+<section class="grid lower">
+<article class="panel"><div class="panel-head"><div><h2>Recent activity</h2><p>Latest updates from your college</p></div><button class="link" id="activity">View all →</button></div>
+<div class="activity"><i>♙</i><span><b>New student enrolled</b><small>Olivia Bennett · Computer Science</small></span><time>12 min ago</time></div>
+<div class="activity"><i class="green">＄</i><span><b>Fee payment received</b><small>$2,450 · Ethan Parker</small></span><time>38 min ago</time></div>
+<div class="activity"><i class="blue">▦</i><span><b>Timetable updated</b><small>Room 204 · Biology 101</small></span><time>1 hr ago</time></div>
+<div class="activity"><i class="orange">✧</i><span><b>Application submitted</b><small>Business Studies · Fall intake</small></span><time>2 hrs ago</time></div></article>
+<article class="panel"><div class="panel-head"><div><h2>Tasks to review <strong id="count">4</strong></h2><p>Items that need your attention</p></div><button class="link" id="allTasks">See all →</button></div>
+<div class="tasks"><button><i></i><span><b>Review pending applications</b><small>Admissions · 8 applications</small></span></button><button><i></i><span><b>Approve faculty leave requests</b><small>People · 3 requests</small></span></button><button><i></i><span><b>Verify fee reconciliation</b><small>Finance · Due today</small></span></button><button><i></i><span><b>Publish midterm schedule</b><small>Academics · Due Oct 9</small></span></button></div></article>
+</section><footer>© 2026 CollegeOS <span>● &nbsp; All systems operational</span><a href="about.html">About &amp; release notes · v0.1.0</a></footer>
+</div></main><div class="toast" id="toast" role="status" aria-live="polite"></div>
+<dialog id="setupDialog"><form method="dialog" id="setupForm"><div class="crest large">C</div><div class="date">PERSONALIZE YOUR CAMPUS</div><h2>Set up your college</h2><p>Start a workspace configured for your institution.</p><label>College name<input id="nameInput" required maxlength="90" placeholder="e.g. Northstar College"></label><div class="form-row"><label>Country<select id="country"><option>India</option><option>United States</option><option>United Kingdom</option><option>Canada</option><option>Other</option></select></label><label>Academic year<select id="yearInput"><option>2026–27</option><option>2027–28</option><option>2025–26</option></select></label></div><label>Administrator email<input type="email" required placeholder="you@college.edu"></label><aside>This preview stores settings only in this browser. Production onboarding must verify your identity and provision an isolated tenant.</aside><div class="form-actions"><button type="button" id="cancel">Cancel</button><button class="primary" type="submit">Create workspace →</button></div></form></dialog>
+<script src="app.js"></script></body></html>
