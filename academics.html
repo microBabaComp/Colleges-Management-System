@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f5f7fb"><meta name="description" content="Manage college academic terms, courses, sections, rosters and attendance.">
+<title>Academics & attendance · CollegeOS</title>
+<link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="auth.css"><link rel="stylesheet" href="academics.css">
+</head>
+<body>
+<header class="records-header"><a class="brand" href="/"><span class="brand-mark">C</span><span>College<span class="light">OS</span></span></a><a href="/">← Dashboard</a><button id="signout" class="plain">Sign out</button></header>
+<main class="records academics">
+<div class="records-top"><div><p class="eyebrow">ACADEMIC AFFAIRS · RELEASE 0.4.0</p><h1>Academics & attendance</h1><p class="lead">Set up terms and courses, organize sections and rosters, then record class attendance.</p></div><span id="collegeBadge" class="college-badge"></span></div>
+<div class="academic-summary" aria-label="Academic workspace summary"><article><small>Academic terms</small><b id="termCount">—</b></article><article><small>Course catalog</small><b id="courseCount">—</b></article><article><small>Sections</small><b id="sectionCount">—</b></article><article><small>Roster seats used</small><b id="seatCount">—</b></article></div>
+<section id="setupPanels" class="academic-grid" hidden>
+<article class="records-card"><h2>Academic term</h2><p class="hint">Define the college calendar window before creating sections.</p><form id="termForm"><div class="fields"><label>Term code<input name="code" maxlength="32" placeholder="2026-FALL" required></label><label>Term name<input name="name" maxlength="100" placeholder="Fall semester 2026" required></label><label>Starts<input name="startsOn" type="date" required></label><label>Ends<input name="endsOn" type="date" required></label></div><button class="primary" type="submit">＋ Create term</button></form></article>
+<article class="records-card"><h2>Course catalog</h2><p class="hint">Use a college-owned course code and a clear catalog title.</p><form id="courseForm"><div class="fields"><label>Course code<input name="code" maxlength="32" placeholder="CS-101" required></label><label>Course title<input name="title" maxlength="140" placeholder="Introduction to Computing" required></label><label>Credits<input name="credits" type="number" min="0" max="99" step="0.5" value="3"></label></div><button class="primary" type="submit">＋ Add course</button></form></article>
+</section>
+<section id="sectionPanel" class="records-card" hidden><h2>Create a course section</h2><p class="hint">Sections connect a catalog course to a term. Optional faculty assignments are restricted to members of this college.</p><form id="sectionForm"><div class="fields"><label>Course<select name="courseId" required></select></label><label>Term<select name="termId" required></select></label><label>Section code<input name="sectionCode" maxlength="32" placeholder="A" required></label><label>Capacity<input name="capacity" type="number" min="1" max="1000" value="60" required></label><label>Faculty instructor<select name="instructorId"><option value="">Unassigned</option></select></label></div><button class="primary" type="submit">＋ Create section</button></form></section>
+<section id="enrollmentPanel" class="records-card" hidden><h2>Manage section enrollment</h2><p class="hint">Choose active students from this college. Existing enrollments are left unchanged.</p><form id="enrollmentForm"><div class="fields"><label>Section<select name="sectionId" required></select></label><label class="wide">Active students<select name="studentIds" multiple size="6" required></select></label></div><button class="primary" type="submit">Enroll selected students</button></form></section>
+<section class="records-card attendance-card"><div class="attendance-heading"><div><h2>Attendance register</h2><p class="hint">Faculty can record attendance only for sections assigned to them.</p></div><button id="loadRoster" class="secondary" type="button">Load register</button></div>
+<div class="fields attendance-filters"><label>Section<select id="attendanceSection" required></select></label><label>Class date<input id="attendanceDate" type="date" required></label></div>
+<div class="table-wrap"><table><thead><tr><th>Student</th><th>Student number</th><th>Attendance</th></tr></thead><tbody id="roster"><tr><td colspan="3">Choose a section and load its roster.</td></tr></tbody></table></div>
+<div class="attendance-footer"><label class="note-label">Class note <input id="attendanceNote" maxlength="500" placeholder="Optional note for this class"></label><button id="saveAttendance" class="primary" type="button">Save attendance</button></div>
+</section>
+<p id="status" class="status" role="status" aria-live="polite"></p>
+<p class="prototype-note">Attendance and enrollment records are sensitive education data. Access is college-scoped and changes are audited. Apply your institution’s privacy, retention, and security policies before production use.</p>
+</main><script src="academics.js"></script>
+</body></html>

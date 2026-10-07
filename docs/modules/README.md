@@ -8,7 +8,7 @@ Each specification records module status, owner, version and review date. For ev
 | Identity & access | In progress | [identity-access.md](identity-access.md) |
 | Admissions | Planned | [admissions.md](admissions.md) |
 | Student records | In progress | [student-records.md](student-records.md) |
-| Academics, timetable & attendance | Planned | [academics-attendance.md](academics-attendance.md) |
+| Academics, timetable & attendance | In progress | [academics-attendance.md](academics-attendance.md) |
 | Faculty & staff | Planned | [faculty-staff.md](faculty-staff.md) |
 | Finance | Planned | [finance.md](finance.md) |
 | Campus services | Planned | [campus-services.md](campus-services.md) |

@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.4.0] — 2026-10-07
+
+### Added
+- Tenant-scoped academic terms, course catalog, sections and faculty assignments.
+- Section enrollment with college membership checks, active-student validation and capacity enforcement.
+- Daily attendance registers for administrators, registrars and assigned faculty, with atomic saves and audit events.
+- Responsive academics and attendance workspace linked from the dashboard.
+
+### Security and data
+- Composite college-aware database foreign keys prevent cross-college academic relationships.
+- Faculty section visibility and attendance recording are assignment-scoped.
+- The migration is additive; destructive rollback requires a reviewed data restore.
+
 ## [0.3.0] — 2026-10-07
 
 ### Added
