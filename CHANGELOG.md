@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.5.0] — 2026-10-07
+
+### Added
+- Require separate Windows Server ZIP, Linux tarball and Docker OCI/Compose release deliverables from the next tagged release; native bundles are not yet published.
+- College administrator workflow to invite college members into registrar, faculty, finance or student-services roles.
+- Hashed, expiring, revocable invitation tokens and audited acceptance; invitations support new accounts and verified existing accounts.
+- College-scoped admissions programs and dated application intakes.
+- Public applications with private status tracking tokens.
+- Registrar/college-admin application review with constrained decisions and audit reasons.
+
+### Security and limitations
+- Tenant-aware foreign keys and per-process submission rate limits.
+- Invitation email delivery and email verification are not implemented; administrators must deliver links privately.
+- No admissions file uploads, applicant accounts or offer-to-student conversion. MFA/SSO, recovery and offboarding remain future identity work.
+
+
+
 ## [0.4.0] — 2026-10-07
 
 ### Added

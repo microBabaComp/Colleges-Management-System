@@ -1,9 +1,17 @@
 {
   "name": "college-management-system",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "private": true,
   "type": "module",
-  "engines": { "node": ">=24 <25" },
-  "scripts": { "start": "node src/server.mjs", "dev": "node --watch src/server.mjs", "db:migrate": "node src/migrate.mjs" },
-  "dependencies": { "pg": "8.16.3" }
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "scripts": {
+    "start": "node src/server.mjs",
+    "dev": "node --watch src/server.mjs",
+    "db:migrate": "node src/migrate.mjs"
+  },
+  "dependencies": {
+    "pg": "8.16.3"
+  }
 }

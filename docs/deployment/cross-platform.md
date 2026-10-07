@@ -1,6 +1,6 @@
 # Cross-platform install and development
 
-**Status:** first-run guide · **Version:** 0.3.0 · **Reviewed:** 2026-10-07
+**Status:** first-run guide · **Version:** 0.4.0 · **Reviewed:** 2026-10-07
 
 ## Supported installation model
 
@@ -36,6 +36,10 @@ Install Node.js 24 LTS. Run `scripts/dev.ps1` in PowerShell or `./scripts/dev.sh
 
 Avoid `docker compose down -v` unless you intend to delete the database volume. The app port binds to loopback only. For LAN or internet access, add an HTTPS reverse proxy, set `APP_ORIGIN` to the exact external origin, and review firewall, backups, residency and operator access. Never expose PostgreSQL publicly. The included in-memory login limiter is single-process defense-in-depth; use an edge/WAF rate limit for multi-replica or public deployments.
 
+## Separate release packages
+
+Every tagged release must publish three independently usable deliverables: a Windows Server ZIP with PowerShell install/upgrade/backup guidance; a Linux .tar.gz with POSIX shell install/upgrade/backup guidance; and a Docker OCI image plus Compose bundle. Each must identify supported OS/runtime/database versions, configuration and secret setup, health checks, database migration/backup and rollback steps. Artifacts must be built from the same source tag and include checksums and a software bill of materials; signing/provenance are release gates before production adoption. The current repository has the shared Docker Compose startup path and developer scripts; platform-specific production packages and signed release automation are not yet published. See [release artifact contract](release-artifacts.md).
+
 ## Platform notes and current scope
 
-Docker Desktop on Windows runs Linux containers through WSL2; Linux hosts use the Compose plugin. The browser client has no platform-specific native component. The first slice includes one-time protected setup, sign-in, college membership context and switching, student creation/search/status, audit events, health endpoints and a responsive dashboard. Admissions, attendance, fees, integrations, staff invitations, automated backups, production TLS and high availability remain planned. This is not yet a complete college ERP or security certification.
+Docker Desktop on Windows runs Linux containers through WSL2; Linux hosts use the Compose plugin. The browser client has no platform-specific native component. The first slice includes one-time protected setup, sign-in, college membership context and switching, student creation/search/status, audit events, health endpoints and a responsive dashboard. Admissions and academic/attendance paths now exist; finance, integrations, automated backup scheduling, production TLS and high availability remain future work. College membership invitation links exist, but email delivery remains manual. This is not yet a complete college ERP or security certification.
