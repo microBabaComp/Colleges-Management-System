@@ -6,9 +6,9 @@ A cross-platform, multi-college operations application. Windows and Linux use th
 
 ## Start
 
-- Windows: Docker Desktop in WSL2 Linux-container mode, then \`./scripts/up.ps1\` in PowerShell.
-- Linux: Docker Engine and Docker Compose plugin, then \`./scripts/up.sh\`.
-- Open \`http://localhost:8080\`, enter the one-time installer token, and create the first college administrator.
+- Windows: Docker Desktop in WSL2 Linux-container mode, then `./scripts/up.ps1` in PowerShell.
+- Linux: Docker Engine and Docker Compose plugin, then `./scripts/up.sh`.
+- Open `http://localhost:8080`, enter the one-time installer token, and create the first college administrator.
 
 See [cross-platform install](docs/deployment/cross-platform.md) for development, backups and platform guidance.
 
