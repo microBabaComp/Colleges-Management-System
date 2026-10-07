@@ -3,6 +3,7 @@
 ## [0.5.0] — 2026-10-07
 
 ### Added
+- Require separate Windows Server ZIP, Linux tarball and Docker OCI/Compose release deliverables from the next tagged release; native bundles are not yet published.
 - College administrator workflow to invite college members into registrar, faculty, finance or student-services roles.
 - Hashed, expiring, revocable invitation tokens and audited acceptance; invitations support new accounts and verified existing accounts.
 - College-scoped admissions programs and dated application intakes.

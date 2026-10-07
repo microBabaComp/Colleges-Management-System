@@ -1,6 +1,6 @@
 # Release artifact contract
 
-**Policy version:** 0.1.0 · **Applies from:** 0.6.0 onward · **Status:** required design; artifacts are not yet published
+**Policy version:** 0.1.0 · **Applies to:** the next and every subsequent tagged release · **Status:** required release gate; implementation pending
 
 Every application release must offer separately downloadable installation options for Windows Server, Linux and Docker. They are alternative deployment packages for the same application version and schema migrations.
 
