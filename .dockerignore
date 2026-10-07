@@ -1,0 +1,9 @@
+.git
+.github
+.secrets
+node_modules
+npm-debug.log
+coverage
+backup-*.sql
+.env
+*.local

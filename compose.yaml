@@ -1,0 +1,59 @@
+name: college-management-system
+services:
+  db:
+    image: postgres:18.6-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${DB_NAME:-collegeos}
+      POSTGRES_USER: ${DB_USER:-collegeos}
+      POSTGRES_PASSWORD_FILE: /run/secrets/db_password
+    secrets: [db_password]
+    volumes: [college_data:/var/lib/postgresql]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-collegeos} -d ${DB_NAME:-collegeos}"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+      start_period: 10s
+    networks: [private]
+    security_opt: [no-new-privileges:true]
+    logging: { driver: json-file, options: { max-size: 10m, max-file: "3" } }
+  app:
+    build: { context: ., dockerfile: Dockerfile }
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: "8080"
+      APP_ORIGIN: ${APP_ORIGIN:-http://localhost:${APP_PORT:-8080}}
+      DB_HOST: db
+      DB_PORT: "5432"
+      DB_NAME: ${DB_NAME:-collegeos}
+      DB_USER: ${DB_USER:-collegeos}
+      DB_PASSWORD_FILE: /run/secrets/db_password
+      BOOTSTRAP_TOKEN_FILE: /run/secrets/bootstrap_token
+      SESSION_TTL_HOURS: ${SESSION_TTL_HOURS:-12}
+    secrets: [db_password, bootstrap_token]
+    ports: ["127.0.0.1:${APP_PORT:-8080}:8080"]
+    depends_on:
+      db: { condition: service_healthy }
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:8080/api/health/ready').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 15s
+      timeout: 4s
+      retries: 5
+      start_period: 20s
+    read_only: true
+    tmpfs: ["/tmp:size=16m,noexec,nosuid"]
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    networks: [private]
+    logging: { driver: json-file, options: { max-size: 10m, max-file: "3" } }
+volumes:
+  college_data:
+networks:
+  private: { internal: true }
+secrets:
+  db_password:
+    file: ${DB_PASSWORD_FILE:-.secrets/db_password}
+  bootstrap_token:
+    file: ${BOOTSTRAP_TOKEN_FILE:-.secrets/bootstrap_token}

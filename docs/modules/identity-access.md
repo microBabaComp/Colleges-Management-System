@@ -1,15 +1,15 @@
 # Identity & access
 
-**Status:** planned · **Owner:** Platform · **Version:** 0.1.0 · **Reviewed:** 2026-10-07
+**Status:** in progress · **Owner:** Platform security · **Spec version:** 0.2.0 · **Reviewed:** 2026-10-07
 
-## Scope
+## Scope and current delivery
 
-Identity provider integration, college memberships, invitations, MFA posture, session revocation, role assignment and time-limited support access.
+The first slice provides email/password login, scrypt password hashes, opaque random server sessions, HttpOnly/SameSite cookies, CSRF token rotation, same-origin checks, session expiry and college-scoped membership roles. Roles currently include platform administrator and college administrator, registrar, faculty, finance and student services.
 
-## Safeguards
+## Authorization model
 
-Use a maintained OIDC/SAML provider. Separate authentication from authorization; check tenant membership, action and resource scope on every request. Avoid shared accounts. Require stronger authorization and immutable audit records for role changes, refunds, grade changes and bulk exports.
+Authentication identifies a user. Every resource operation separately checks verified membership, tenant and role. Student reads/writes are currently limited to college administrators and registrars. Platform administrator is a separate platform capability and does not implicitly grant access to arbitrary records without an active membership. Deny by default; audit changes to memberships and roles.
 
-## Data and release notes
+## Gaps and release notes
 
-Store provider subject IDs and minimum profile attributes. Document each permission/schema change, migration, session impact and recovery path. Every release must record changes here and in the project changelog.
+SSO, MFA, invitations, password recovery, user offboarding, account lockout policy and delegated role management are not implemented. Do not present the current login as enterprise SSO or a complete identity lifecycle. Document credential/session impacts, permission diffs, migrations, recovery and security advisories in every release.

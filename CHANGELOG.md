@@ -1,9 +1,18 @@
 # Changelog
 
+## [0.3.0] — 2026-10-07
+
+### Added
+- Token-protected first-run setup; multi-college workspace creation, listing and membership-verified switching.
+- Role-restricted student records and Windows/Linux Docker and direct-development scripts.
+- PostgreSQL migrations, tenant-scoped student data and append-only audit records.
+
+## [0.2.0] — 2026-10-07
+
+### Added
+- Cross-platform Docker Compose deployment; secure sessions; student directory; health checks and deployment guide.
+
 ## [0.1.0] — 2026-10-07
 
 ### Added
-- CollegeOS dashboard prototype with sample college metrics, charts, activity, tasks and responsive navigation.
-- Browser-only tenant setup preview with college name, region and academic year.
-- Architecture, security, tenant onboarding, module documentation, roadmap and versioning policy.
-- Explicit notice that this initial UI is a prototype and contains no live records or backend.
+- College dashboard prototype, architecture, security, module map and release documents.

@@ -1,15 +1,15 @@
-# Academics & attendance
+# Academics, timetable & attendance
 
-**Status:** planned · **Owner:** Academic affairs · **Version:** 0.1.0 · **Reviewed:** 2026-10-07
+**Status:** planned · **Owner:** Academic affairs · **Spec version:** 0.1.0 · **Reviewed:** 2026-10-07
 
 ## Scope
 
-Academic years and terms, faculties, programs, courses, sections, timetables, rosters, grading schemes, assessments, results and attendance sessions.
+Academic years/terms, faculties, departments, programs, courses, sections, schedules, rosters, grading schemes, assessments, result publication and attendance sessions.
 
-## Safeguards
+## Access and safeguards
 
-Faculty access assigned sections; students see their enrolled sections and released results. Keep grade changes attributable, separate draft from published results, support correction/appeal windows, validate timetable conflicts and give attendance adjustments a reason.
+Faculty must be scoped to assigned sections; students to current enrollments and released results. Keep draft and published results distinct. Grade changes require actor, reason and audit record; define appeal/correction windows. Validate schedule conflicts and make attendance adjustments attributable.
 
-## Data and release notes
+## Release notes
 
-Release notes state grading policy, permission, schema and migration changes plus rollback. Every release must record changes here and in the project changelog.
+Document grading/calendar policy, permission matrices, student data fields, integrations, migrations, rollback and operational monitoring. No academic, timetable or attendance data is implemented in this release.

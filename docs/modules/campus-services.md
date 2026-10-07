@@ -1,15 +1,15 @@
 # Campus services
 
-**Status:** planned · **Owner:** Campus operations · **Version:** 0.1.0 · **Reviewed:** 2026-10-07
+**Status:** planned · **Owner:** Campus operations · **Spec version:** 0.1.0 · **Reviewed:** 2026-10-07
 
 ## Scope
 
-Optional library, transport, hostel, facilities, inventory and service-desk workflows configured for each campus.
+Optional library, transport, hostel/residence, facilities, inventory and service-desk workflows configured per campus.
 
-## Safeguards
+## Access and safeguards
 
-Enable only services operated by the college. Apply least privilege to sensitive welfare/location data. Define retention for movement, bookings and attachments; protect exports.
+Enable only services the college operates. Apply least privilege to sensitive welfare and location details. Define retention for movement/booking records; authorize private attachments and exports; audit allocation and override actions.
 
-## Data and release notes
+## Release notes
 
-Document dependencies, data fields, role scope, operational steps, migrations and rollback. Every release must record changes here and in the project changelog.
+For each service document dependencies, data fields, role scope, campus configuration, migration/backout, operational runbook and support changes. These services are not implemented yet.

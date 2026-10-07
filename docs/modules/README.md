@@ -1,17 +1,18 @@
 # Module documentation index
 
-Each module document has a version, owner, status and review date. For each release record user-visible behavior, data/schema changes, permissions, integrations, migrations/rollback, risks and support notes. Update the module document and changelog together.
+Each specification records module status, owner, version and review date. For every module release, update user-visible behavior, access rules, data/schema changes, integrations, migrations/rollback, risks and support notes. Update the module spec and project changelog in the same pull request as code.
 
-| Module | Specification |
-|---|---|
-| Identity & access | [identity-access.md](identity-access.md) |
-| Admissions | [admissions.md](admissions.md) |
-| Student records | [student-records.md](student-records.md) |
-| Academics & attendance | [academics-attendance.md](academics-attendance.md) |
-| Faculty & staff | [faculty-staff.md](faculty-staff.md) |
-| Finance | [finance.md](finance.md) |
-| Campus services | [campus-services.md](campus-services.md) |
-| Communications | [communications.md](communications.md) |
-| Analytics & governance | [analytics-governance.md](analytics-governance.md) |
+| Module | Status | Specification |
+|---|---|---|
+| Tenant setup & college administration | In progress | [tenant-administration.md](tenant-administration.md) |
+| Identity & access | In progress | [identity-access.md](identity-access.md) |
+| Admissions | Planned | [admissions.md](admissions.md) |
+| Student records | In progress | [student-records.md](student-records.md) |
+| Academics, timetable & attendance | Planned | [academics-attendance.md](academics-attendance.md) |
+| Faculty & staff | Planned | [faculty-staff.md](faculty-staff.md) |
+| Finance | Planned | [finance.md](finance.md) |
+| Campus services | Planned | [campus-services.md](campus-services.md) |
+| Communications | Planned | [communications.md](communications.md) |
+| Analytics, audit & governance | In progress | [analytics-governance.md](analytics-governance.md) |
 
-These specifications define intended scope. They do not claim that the modules are implemented in the current UI prototype.
+“Planned” and “in progress” modules are specifications, not claims of implemented functionality.

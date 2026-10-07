@@ -1,15 +1,15 @@
 # Communications
 
-**Status:** planned · **Owner:** College operations · **Version:** 0.1.0 · **Reviewed:** 2026-10-07
+**Status:** planned · **Owner:** College operations · **Spec version:** 0.1.0 · **Reviewed:** 2026-10-07
 
 ## Scope
 
-College and course announcements, student notices, guardian messages where appropriate, event reminders, templates, channel preferences and delivery history.
+College and course announcements, student notices, authorized guardian messages, event reminders, emergency broadcast, templates, channel preferences, translation and delivery history.
 
-## Safeguards
+## Access and safeguards
 
-Verify audience scope before sending. Respect consent and channel preferences, protect contact information, rate-limit bulk sends and audit emergency broadcasts.
+Verify the audience and tenant scope before sending. Respect consent and channel preferences, protect contact details, rate-limit bulk sends and audit emergency notices. Avoid exposing recipients or message content in operational logs.
 
-## Data and release notes
+## Release notes
 
-Record audience rules, provider/integration changes, templates, data and delivery behavior. Every release must record changes here and in the project changelog.
+Record audience rules, integrations, templates, delivery guarantees, privacy impact and rollback. This module is not implemented yet.

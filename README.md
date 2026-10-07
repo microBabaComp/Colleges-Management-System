@@ -2,41 +2,27 @@
 
 Project board: [College Management System](https://github.com/users/microBabaComp/projects/1).
 
-A multi-college operations platform to bring academic, administrative, finance, and student-support workflows into one tenant-aware product. This repository is the college-specific project and is separate from the SchoolOS project.
+A cross-platform, multi-college operations application. Windows and Linux use the same Docker Compose stack; developers can run the Node.js app directly with PostgreSQL in Docker. This repository is separate from SchoolOS.
 
-> **Prototype status:** the current web UI uses illustrative sample data only. It has no backend, identity provider, database, or live college records. Do not enter real personal information.
+## Start
 
-## Product direction
+- Windows: Docker Desktop in WSL2 Linux-container mode, then `./scripts/up.ps1` in PowerShell.
+- Linux: Docker Engine and Docker Compose plugin, then `./scripts/up.sh`.
+- Open `http://localhost:8080`, enter the one-time installer token, and create the first college administrator.
 
-- Multiple colleges can onboard independently and configure their name, branding, campuses, academic calendar, locale, and enabled modules.
-- Tenant data is isolated and every server request is authorized against verified membership and resource scope.
-- Students, faculty, administrators, registrar, finance, and operations teams see role-appropriate experiences.
-- Each module has a maintained specification and version history.
+See [cross-platform install](docs/deployment/cross-platform.md) for development, backups and platform guidance.
 
-## Modules
+## Implemented foundation (0.3.0)
 
-Tenant onboarding; identity and access; admissions; student records; academics, timetable, grades and attendance; faculty and staff; fees and finance; library, hostel and transport; campus facilities; communication; analytics; audit and governance.
+One-time token-protected setup; scrypt password hashes; random opaque sessions; HttpOnly/SameSite cookies; CSRF token rotation and origin checks; college memberships and verified switching; platform-admin college provisioning; PostgreSQL migrations for colleges, memberships, sessions, students and append-only audit events; role-restricted student create/search/status APIs and UI; health/readiness endpoints; security headers; Docker health checks, private service network, persistent database volume, non-root read-only app container, dropped capabilities and file-backed secrets.
 
-## Run the prototype
+## Scope and security
 
-Open `index.html` in a modern browser. No install step is needed. The navigation, tenant setup, search, theme and task controls are demonstrations; operational data is static sample content.
+The dashboard’s attendance, finance and admissions charts remain placeholders. This is an early working foundation, not a complete ERP, independent security audit, or guarantee against vulnerabilities. Do not load production student data until the institution has reviewed privacy, access, backups, TLS, monitoring and incident response.
 
-## Production architecture
+## Documents
 
-Start with a modular, typed application and versioned API, managed OIDC identity with MFA, relational data with tenant-scoped access, private object storage, durable background jobs, centralized audit/observability, encrypted backups, and automated dependency/secret scanning. Select cloud provider, region, identity provider and integrations after privacy, residency, budget, and operations requirements are established.
+- [Architecture](docs/architecture/overview.md) · [Cross-platform install](docs/deployment/cross-platform.md) · [Tenant onboarding](docs/product/tenant-onboarding.md)
+- [Security baseline](docs/security/security-baseline.md) · [Module specifications](docs/modules/README.md) · [Versioning](docs/governance/versioning.md) · [Roadmap](docs/roadmap.md) · [Changelog](CHANGELOG.md)
 
-## Security
-
-No system can honestly be guaranteed “unhackable.” Before production, complete threat modeling, server-side authorization review, tenant-isolation testing, independent penetration testing, privacy/legal review, backup restoration exercises, and incident response preparation. See [Security baseline](docs/security/security-baseline.md).
-
-## Documentation and versioning
-
-- [Architecture](docs/architecture/overview.md)
-- [Module index](docs/modules/README.md)
-- [Tenant onboarding](docs/product/tenant-onboarding.md)
-- [Security baseline](docs/security/security-baseline.md)
-- [Versioning policy](docs/governance/versioning.md)
-- [Roadmap](docs/roadmap.md)
-- [Changelog](CHANGELOG.md)
-
-No license has been selected. Add one when ownership and distribution terms are decided.
+Runtime baseline: Node.js 24 LTS, PostgreSQL 18, Docker Compose. [Node.js release schedule](https://nodejs.org/en/about/previous-releases) · [PostgreSQL support policy](https://www.postgresql.org/support/versioning/) · [Docker Compose install](https://docs.docker.com/compose/install/).
