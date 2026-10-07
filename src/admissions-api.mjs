@@ -56,7 +56,8 @@ export async function handleAdmissionsApi(req,res,url,auth,{pool,csrf,limit,chec
   csrf(req,auth);if(!canManage(auth))fail(403,'forbidden');limit(req,'admission_program_write',30,60000);
   const d=await readBody(req),code=String(d.code||'').trim(),title=String(d.title||'').trim();
   if(!validText(code,1,32)||!validText(title,2,140))fail(400,'invalid_program');
-  try{const row=await pool.query('INSERT INTO admission_programs(college_id,code,title) VALUES($1,$2,$3) RETURNING id,code,title,active',[auth.college_id,code,title]);await pool.query('INSERT INTO audit_events(college_id,actor_user_id,action,entity_type,entity_id) VALUES($1,$2,$3,$4,$5)',[auth.college_id,auth.user_id,'admissions.program_created','admission_program',row.rows[0].id]);return json(res,201,{program:row.rows[0]})}catch(error){if(error.code==='23505')fail(409,'program_code_exists');throw error}
+  const client=await pool.connect();
+  try{await client.query('BEGIN');const row=await client.query('INSERT INTO admission_programs(college_id,code,title) VALUES($1,$2,$3) RETURNING id,code,title,active',[auth.college_id,code,title]);await client.query('INSERT INTO audit_events(college_id,actor_user_id,action,entity_type,entity_id) VALUES($1,$2,$3,$4,$5)',[auth.college_id,auth.user_id,'admissions.program_created','admission_program',row.rows[0].id]);await client.query('COMMIT');return json(res,201,{program:row.rows[0]})}catch(error){try{await client.query('ROLLBACK')}catch{}if(error.code==='23505')fail(409,'program_code_exists');throw error}finally{client.release()}
  }
  if(path==='/api/admissions/intakes'&&method==='GET'){
   if(!canManage(auth))fail(403,'forbidden');
@@ -67,7 +68,8 @@ export async function handleAdmissionsApi(req,res,url,auth,{pool,csrf,limit,chec
   csrf(req,auth);if(!canManage(auth))fail(403,'forbidden');limit(req,'admission_intake_write',30,60000);
   const d=await readBody(req),code=String(d.code||'').trim(),name=String(d.name||'').trim(),opensOn=d.opensOn,closesOn=d.closesOn,status=['draft','open','closed'].includes(d.status)?d.status:'draft';
   if(!validText(code,1,32)||!validText(name,2,120)||!validDate(opensOn)||!validDate(closesOn)||closesOn<opensOn)fail(400,'invalid_intake');
-  try{const row=await pool.query('INSERT INTO admission_intakes(college_id,code,name,opens_on,closes_on,status) VALUES($1,$2,$3,$4,$5,$6) RETURNING id,code,name,opens_on,closes_on,status',[auth.college_id,code,name,opensOn,closesOn,status]);await pool.query('INSERT INTO audit_events(college_id,actor_user_id,action,entity_type,entity_id) VALUES($1,$2,$3,$4,$5)',[auth.college_id,auth.user_id,'admissions.intake_created','admission_intake',row.rows[0].id]);return json(res,201,{intake:row.rows[0]})}catch(error){if(error.code==='23505')fail(409,'intake_code_exists');throw error}
+  const client=await pool.connect();
+  try{await client.query('BEGIN');const row=await client.query('INSERT INTO admission_intakes(college_id,code,name,opens_on,closes_on,status) VALUES($1,$2,$3,$4,$5,$6) RETURNING id,code,name,opens_on,closes_on,status',[auth.college_id,code,name,opensOn,closesOn,status]);await client.query('INSERT INTO audit_events(college_id,actor_user_id,action,entity_type,entity_id) VALUES($1,$2,$3,$4,$5)',[auth.college_id,auth.user_id,'admissions.intake_created','admission_intake',row.rows[0].id]);await client.query('COMMIT');return json(res,201,{intake:row.rows[0]})}catch(error){try{await client.query('ROLLBACK')}catch{}if(error.code==='23505')fail(409,'intake_code_exists');throw error}finally{client.release()}
  }
  if(path==='/api/admissions/applications'&&method==='GET'){
   if(!canManage(auth))fail(403,'forbidden');
