@@ -5,13 +5,13 @@ import { dirname, join } from 'node:path';
 import { randomUUID } from 'node:crypto';
 import { pool } from './db.mjs';
 import { migrate } from './migrate.mjs';
-import { hashPassword, newToken, parseCookies, safeEqual, sha256, verifyPassword } from './security.mjs'; import { handleAcademicApi } from './academic-api.mjs'; import { handleAdmissionsApi } from './admissions-api.mjs';
+import { hashPassword, newToken, parseCookies, safeEqual, sha256, verifyPassword } from './security.mjs'; import { handleAcademicApi } from './academic-api.mjs'; import { handleAdmissionsApi } from './admissions-api.mjs'; import { handleIdentityApi } from './identity-api.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const port = Number(process.env.PORT || 8080);
 const sessionHours = Math.min(Math.max(Number(process.env.SESSION_TTL_HOURS || 12), 1), 24);
 const origin = process.env.APP_ORIGIN || (process.env.NODE_ENV === 'production' ? '' : `http://localhost:${port}`);
-const staticFiles = new Map([['/', 'index.html'], ['/index.html', 'index.html'], ['/login.html', 'login.html'], ['/students.html', 'students.html'], ['/colleges.html', 'colleges.html'], ['/academics.html', 'academics.html'], ['/admissions.html', 'admissions.html'], ['/apply.html', 'apply.html'], ['/about.html', 'about.html'], ['/styles.css', 'styles.css'], ['/auth.css', 'auth.css'], ['/app.js', 'app.js'], ['/login.js', 'login.js'], ['/students.js', 'students.js'], ['/colleges.js', 'colleges.js'], ['/academics.css', 'academics.css'], ['/about.css', 'about.css'], ['/academics.js', 'academics.js'], ['/admissions.css', 'admissions.css'], ['/admissions.js', 'admissions.js'], ['/apply.js', 'apply.js']]);
+const staticFiles = new Map([['/', 'index.html'], ['/index.html', 'index.html'], ['/login.html', 'login.html'], ['/students.html', 'students.html'], ['/colleges.html', 'colleges.html'], ['/academics.html', 'academics.html'], ['/admissions.html', 'admissions.html'], ['/apply.html', 'apply.html'], ['/people.html', 'people.html'], ['/invite.html', 'invite.html'], ['/people.css', 'people.css'], ['/people.js', 'people.js'], ['/invite.js', 'invite.js'], ['/about.html', 'about.html'], ['/styles.css', 'styles.css'], ['/auth.css', 'auth.css'], ['/app.js', 'app.js'], ['/login.js', 'login.js'], ['/students.js', 'students.js'], ['/colleges.js', 'colleges.js'], ['/academics.css', 'academics.css'], ['/about.css', 'about.css'], ['/academics.js', 'academics.js'], ['/admissions.css', 'admissions.css'], ['/admissions.js', 'admissions.js'], ['/apply.js', 'apply.js']]);
 const mime = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8' };
 const attempts = new Map();
 const MAX_BODY = 32 * 1024;
@@ -124,7 +124,7 @@ async function handleApi(req, res, url) {
     return response(res,200,{user:{id:row.id,email:row.email,displayName:row.display_name},college:{id:row.college_id,name:row.college_name,slug:row.college_slug,role:row.college_role},csrfToken,expiresAt:expires.toISOString()});
   }
 
-  const auth=await authenticate(req); if(await handleAcademicApi(req,res,url,auth,{pool,csrf,limit}))return; if(await handleAdmissionsApi(req,res,url,auth,{pool,csrf,limit,checkOrigin}))return;
+  const auth=await authenticate(req); if(await handleAcademicApi(req,res,url,auth,{pool,csrf,limit}))return; if(await handleAdmissionsApi(req,res,url,auth,{pool,csrf,limit,checkOrigin}))return; if(await handleIdentityApi(req,res,url,auth,{pool,csrf,limit,checkOrigin}))return;
   if(method==='GET'&&pathname==='/api/session'){
     if(!auth)return response(res,401,{error:'authentication_required'});
     const csrfToken=newToken(24);

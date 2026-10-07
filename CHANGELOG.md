@@ -3,13 +3,16 @@
 ## [0.5.0] — 2026-10-07
 
 ### Added
+- College administrator workflow to invite college members into registrar, faculty, finance or student-services roles.
+- Hashed, expiring, revocable invitation tokens and audited acceptance; invitations support new accounts and verified existing accounts.
 - College-scoped admissions programs and dated application intakes.
 - Public applications with private status tracking tokens.
 - Registrar/college-admin application review with constrained decisions and audit reasons.
 
 ### Security and limitations
 - Tenant-aware foreign keys and per-process submission rate limits.
-- No file uploads, email delivery, applicant accounts or offer-to-student conversion.
+- Invitation email delivery and email verification are not implemented; administrators must deliver links privately.
+- No admissions file uploads, applicant accounts or offer-to-student conversion. MFA/SSO, recovery and offboarding remain future identity work.
 
 
 
